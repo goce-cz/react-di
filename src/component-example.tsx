@@ -28,12 +28,12 @@ const SomeChild = () => {
 export const ComponentExampleRoot = () => (
   <div>
     <SomeChild/>
-    <useMamasAndPapas.Provider
-      override={{
+    <useMamasAndPapas.Override
+      values={{
         Papa: BoldPapa
       }}
     >
       <SomeChild/>
-    </useMamasAndPapas.Provider>
+    </useMamasAndPapas.Override>
   </div>
 )

@@ -1,9 +1,9 @@
 import React, { createContext, FunctionComponent, useContext, useMemo } from 'react'
 
-type ProviderComponent<T extends Record<string, any>> = FunctionComponent<{ override: Partial<T> }>
+type ProviderComponent<T extends Record<string, any>> = FunctionComponent<{ values: Partial<T> }>
 
 interface DependencyInjector<T extends Record<string, any>> {
-  Provider: ProviderComponent<T>;
+  Override: ProviderComponent<T>;
 
   (): T;
 }
@@ -22,13 +22,13 @@ export function createInjector<T extends Record<string, any>> (defaults: T): Dep
   const context = createContext(defaults)
   const useDependencies = (() => useContext(context)) as DependencyInjector<T>
 
-  const Provider: ProviderComponent<T> = ({ override, children }) => {
+  const Override: ProviderComponent<T> = ({ values, children }) => {
     const parentValues = useContext(context)
-    const childValues = useShallowObjectMemo({ ...parentValues, ...override })
+    const childValues = useShallowObjectMemo({ ...parentValues, ...values })
     return <context.Provider value={childValues}>{children}</context.Provider>
   }
 
-  useDependencies.Provider = Provider
+  useDependencies.Override = Override
 
   return useDependencies
 }

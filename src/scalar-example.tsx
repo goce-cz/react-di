@@ -14,12 +14,12 @@ const SomeChild = () => {
 export const ScalarExampleRoot = () => (
   <div>
     <SomeChild/>
-    <useMamasAndPapas.Provider
-      override={{
+    <useMamasAndPapas.Override
+      values={{
         mama: 'máma'
       }}
     >
       <SomeChild/>
-    </useMamasAndPapas.Provider>
+    </useMamasAndPapas.Override>
   </div>
 )
