@@ -5,6 +5,7 @@ import { TodoEditor } from '../components/TodoEditor'
 import { TodoItem } from '../components/TodoItem'
 import { TodoList } from '../components/TodoList'
 import { Checkbox } from '../components/Checkbox'
+import { createContext, useContext } from 'react'
 
 const defaultComponents = {
   Checkbox,
@@ -18,7 +19,8 @@ const defaultComponents = {
 
 export type ComponentPalette = typeof defaultComponents
 
-export function useComponentPalette (): ComponentPalette {
-  return defaultComponents
-}
+export const ComponentPaletteContext = createContext(defaultComponents)
 
+export function useComponentPalette (): ComponentPalette {
+  return useContext(ComponentPaletteContext)
+}
