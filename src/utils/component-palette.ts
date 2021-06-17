@@ -5,7 +5,7 @@ import { TodoEditor } from '../components/TodoEditor'
 import { TodoItem } from '../components/TodoItem'
 import { TodoList } from '../components/TodoList'
 import { Checkbox } from '../components/Checkbox'
-import { createContext, useContext } from 'react'
+import { ComponentType, createContext, useContext } from 'react'
 
 const defaultComponents = {
   Checkbox,
@@ -17,9 +17,13 @@ const defaultComponents = {
   TodoList
 }
 
-export type ComponentPalette = typeof defaultComponents
+export type ComponentPalette = {
+  [K in keyof typeof defaultComponents]: typeof defaultComponents[K] extends ComponentType<infer P>
+    ? ComponentType<P>
+    : never
+}
 
-export const ComponentPaletteContext = createContext(defaultComponents)
+export const ComponentPaletteContext = createContext<ComponentPalette>(defaultComponents)
 
 export function useComponentPalette (): ComponentPalette {
   return useContext(ComponentPaletteContext)
