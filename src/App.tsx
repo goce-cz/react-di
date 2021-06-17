@@ -1,20 +1,20 @@
 import React from 'react'
 import './App.css'
 import { TodoManager } from './components/TodoManager'
-import { OverrideComponents } from './components/OverrideComponents'
+import { useComponentPalette } from './utils/component-palette'
 import { FancyCheckbox } from './overrides/FancyCheckbox'
 import { ConciseTodoList } from './overrides/ConciseTodoList'
 
 function App() {
   return (
-    <OverrideComponents
-      components={{
+    <useComponentPalette.Override
+      values={{
         Checkbox: FancyCheckbox,
         TodoList: ConciseTodoList
       }}
     >
       <TodoManager/>
-    </OverrideComponents>
+    </useComponentPalette.Override>
   )
 }
 

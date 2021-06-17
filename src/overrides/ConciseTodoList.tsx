@@ -1,15 +1,15 @@
 import { TodoList, TodoListProps } from '../components/TodoList'
 import { ConciseButton } from './ConciseButton'
-import { OverrideComponents } from '../components/OverrideComponents'
+import { useComponentPalette } from '../utils/component-palette'
 
 export function ConciseTodoList (props: TodoListProps) {
   return (
-    <OverrideComponents
-      components={{
+    <useComponentPalette.Override
+      values={{
         Button: ConciseButton
       }}
     >
       <TodoList {...props}/>
-    </OverrideComponents>
+    </useComponentPalette.Override>
   )
 }

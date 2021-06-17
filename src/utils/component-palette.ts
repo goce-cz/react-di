@@ -5,7 +5,8 @@ import { TodoEditor } from '../components/TodoEditor'
 import { TodoItem } from '../components/TodoItem'
 import { TodoList } from '../components/TodoList'
 import { Checkbox } from '../components/Checkbox'
-import { ComponentType, createContext, useContext } from 'react'
+import { ComponentType } from 'react'
+import { createUseDependencies } from '@spicy-hooks/core'
 
 const defaultComponents = {
   Checkbox,
@@ -23,8 +24,4 @@ export type ComponentPalette = {
     : never
 }
 
-export const ComponentPaletteContext = createContext<ComponentPalette>(defaultComponents)
-
-export function useComponentPalette (): ComponentPalette {
-  return useContext(ComponentPaletteContext)
-}
+export const useComponentPalette = createUseDependencies<ComponentPalette>(defaultComponents)
