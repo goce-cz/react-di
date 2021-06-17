@@ -3,14 +3,14 @@ import './App.css'
 import { TodoManager } from './components/TodoManager'
 import { OverrideComponents } from './components/OverrideComponents'
 import { FancyCheckbox } from './overrides/FancyCheckbox'
-import { ConciseButton } from './overrides/ConciseButton'
+import { ConciseTodoList } from './overrides/ConciseTodoList'
 
 function App() {
   return (
     <OverrideComponents
       components={{
         Checkbox: FancyCheckbox,
-        Button: ConciseButton
+        TodoList: ConciseTodoList
       }}
     >
       <TodoManager/>
