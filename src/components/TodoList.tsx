@@ -1,6 +1,6 @@
-import { TodoItem } from './TodoItem'
 import { TodoEntry } from '../data/types'
 import { Dispatch } from 'react'
+import { useComponentPalette } from '../utils/component-palette'
 
 export interface TodoListProps {
   todoEntries: TodoEntry[]
@@ -10,6 +10,8 @@ export interface TodoListProps {
 }
 
 export function TodoList ({ todoEntries, onChange, onEdit, onDelete }: TodoListProps) {
+  const { TodoItem } = useComponentPalette()
+
   return (
     <ul>
       {

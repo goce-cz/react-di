@@ -1,9 +1,7 @@
 import { Dispatch } from 'react'
 
 import { TodoEntry } from '../data/types'
-import { Checkbox } from './Checkbox'
-import { TodoDescription } from './TodoDescription'
-import { Button } from './Button'
+import { useComponentPalette } from '../utils/component-palette'
 
 export interface TodoItemProps {
   todoEntry: TodoEntry
@@ -13,6 +11,8 @@ export interface TodoItemProps {
 }
 
 export function TodoItem ({ todoEntry, onChange, onEdit, onDelete }: TodoItemProps) {
+  const { Checkbox, TodoDescription, Button } = useComponentPalette()
+
   const handleChangeState: Dispatch<boolean> = done => onChange({ ...todoEntry, done })
 
   return (

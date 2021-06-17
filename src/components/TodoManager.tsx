@@ -2,12 +2,12 @@ import { Dispatch, useState } from 'react'
 
 import { mockTodoEntries } from '../data/mock'
 import { TodoEntry } from '../data/types'
-import { TodoList } from './TodoList'
-import { TodoEditor } from './TodoEditor'
-import { Button } from './Button'
 import { EMPTY_TODO, useTodoLogic } from '../utils/use-todo-logic'
+import { useComponentPalette } from '../utils/component-palette'
 
 export function TodoManager () {
+  const { TodoList, TodoEditor, Button } = useComponentPalette()
+
   const [todoEntries, setTodoEntries] = useState(mockTodoEntries)
 
   const {

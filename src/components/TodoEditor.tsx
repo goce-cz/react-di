@@ -1,8 +1,7 @@
 import { Dispatch, useState } from 'react'
 
 import { TodoEntry } from '../data/types'
-import { Button } from './Button'
-import { TextInput } from './TextInput'
+import { useComponentPalette } from '../utils/component-palette'
 
 export interface TodoEditorProps {
   todoEntry: TodoEntry | Omit<TodoEntry, 'id'>
@@ -11,6 +10,8 @@ export interface TodoEditorProps {
 }
 
 export function TodoEditor ({ todoEntry, onChange, onCancel }: TodoEditorProps) {
+  const { TextInput, Button } = useComponentPalette()
+
   const [interimValues, setInterimValues] = useState(() => ({ ...todoEntry }))
 
   return (
